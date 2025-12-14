@@ -55,15 +55,15 @@
             padding: var(--spacing-unit);
             border: 1px solid var(--color-border);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease;
             display: flex;
             flex-direction: column;
             overflow: hidden;
         }
 
         .bento-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+            transform: scale(1.02);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
         }
 
         .card-header {
@@ -88,40 +88,77 @@
 
         /* --- 4. Card Specific Layouts (Desktop Grid) --- */
 
-        /* Card 1 (Profile): Large box (2x2) */
+        /* Card 1 (Profile): Large box (2x2) - UPDATED FOR BACKGROUND IMAGE */
         .card-1 {
             grid-column: span 2;
             grid-row: span 2;
+            background-image: url('bg.jpg'); /* Set the image path */
+            background-size: cover;          /* Scale the image to cover the card area */
+            background-position: center;     /* Center the image */
+            background-repeat: no-repeat;    /* Prevent the image from tiling */
+            position: relative; /* Needed for the overlay */
+            z-index: 1; 
+            color: white; /* Default text color for the card is now white */
+            /* The base background-color (#ffffff) is overridden by the image */
+        }
+
+        /* Optional: Add a subtle gradient overlay to improve text readability */
+        .card-1::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.35); /* Slightly darker overlay */
+            border-radius: var(--border-radius);
+            z-index: 2; /* Position overlay above the image */
+        }
+
+        /* Reset the card's inner content to be positioned above the overlay */
+        .card-1 > * {
+            position: relative;
+            z-index: 3;
+        }
+        
+        /* Text color overrides for card 1 content */
+        .card-1 .card-header {
+            color: rgba(255, 255, 255, 0.8); /* Light grey header */
         }
         .card-1 .profile-name {
             font-size: 2.5rem;
             font-weight: 800;
-            color: var(--color-text-primary);
+            color: white; /* Pure white name */
             margin-bottom: 0.25rem;
         }
         .card-1 .profile-details {
             font-size: 1.25rem;
-            color: var(--color-accent);
+            color: #87ceeb; /* Lighter blue accent for contrast */
             margin-bottom: var(--spacing-unit);
         }
         .card-1 .tagline {
             font-style: italic;
             font-size: 1.1rem;
-            color: var(--color-text-secondary);
+            color: rgba(255, 255, 255, 0.9);
             margin-bottom: 1rem;
             padding-left: 0.5rem;
-            border-left: 3px solid var(--color-accent);
+            border-left: 3px solid #87ceeb;
         }
         .card-1 .social-links a {
             text-decoration: none;
-            color: var(--color-text-secondary);
+            color: white;
             font-weight: 500;
             margin-right: 1rem;
             transition: color 0.2s ease;
         }
         .card-1 .social-links a:hover {
-            color: var(--color-accent);
+            color: #87ceeb;
         }
+        .card-1 .card-content {
+            color: rgba(255, 255, 255, 0.9);
+        }
+        /* End Card 1 specific styles */
+
 
         /* Card 2 (Location): Small box (1x1) */
         .card-2 {
@@ -132,10 +169,38 @@
             text-align: center;
         }
         .card-2 .location-text {
-            font-size: 1.3rem; /* Slightly smaller for two lines of text */
+            font-size: 1.3rem;
             font-weight: 700;
             color: var(--color-accent);
             line-height: 1.4;
+        }
+
+        /* Card 5 (Hobby): Small box (1x1) */
+        .card-5 {
+            grid-column: span 1;
+            grid-row: span 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card-5 .hobby-text {
+            font-size: 1.25rem;
+            font-weight: 700;
+        }
+
+        /* Card 7 (Reflection): Small box (1x1) */
+        .card-7 {
+            grid-column: span 1;
+            grid-row: span 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card-7 .reflection-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--color-accent);
+            margin-bottom: 0.5rem;
         }
 
         /* Card 3 (Subjects/Tech Stack): Medium box (1x2) */
@@ -173,19 +238,6 @@
             font-weight: 700;
             color: var(--color-accent);
             margin-top: 0.5rem;
-        }
-
-        /* Card 5 (Hobby): Small box (1x1) */
-        .card-5 {
-            grid-column: span 1;
-            grid-row: span 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .card-5 .hobby-text {
-            font-size: 1.25rem;
-            font-weight: 700;
         }
 
         /* Card 6 (Playlist): Wide box (4x1) */
@@ -252,7 +304,7 @@
                 <br>
                 <div class="social-links">
                     <a href="#" target="_blank">LinkedIn</a>
-                    <a href="#" target="_blank">GitHub</a>
+                    <a href="https://s79553.github.io/" target="_blank">GitHub</a>
                     <a href="#" target="_blank">UMT Portal</a>
                 </div>
             </div>
@@ -263,7 +315,7 @@
             <div class="location-text">
                 UMT, Kuala Nerus
                 <br>
-                2:31 PM (+08)
+                4:04 PM (+08)
             </div>
         </div>
 
@@ -274,6 +326,16 @@
             </div>
             <div class="card-content">
                 <p>at Pantai UMT for reflection and relaxation.</p>
+            </div>
+        </div>
+        
+        <div class="bento-card card-7">
+            <div class="card-header">VISION & IMPACT</div>
+            <div class="reflection-title">
+                Why Food Tech Matters in Malaysia
+            </div>
+            <div class="card-content">
+                <p>Sustainable food security is crucial for our future. By optimizing local processing methods, we can reduce waste and improve nutrition.</p>
             </div>
         </div>
 
@@ -297,12 +359,12 @@
                 <p>Analyzing the effect of cooking methods and ingredients on the texture profiles of popular Malaysian Kuih Lapis.</p>
             </div>
         </div>
-
+        
         <div class="bento-card card-6">
             <div class="card-header" style="margin-bottom: 0;">STUDY FLOW</div>
             <div class="placeholder-bar"></div>
             <div class="playlist-text" style="margin-left: 1rem;">
-                Traditional Melodies
+               <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/artist/0J1gUosYaFbrSG6FkbE4c7?utm_source=generator" width="100%" height="352" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
         </div>
 
