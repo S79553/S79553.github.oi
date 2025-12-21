@@ -31,7 +31,7 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: var(--color-background);
-            color: var(--text-primary);
+            color: var(--color-text-primary);
             min-height: 100vh;
             padding: var(--spacing-unit);
             display: flex;
@@ -137,13 +137,13 @@
         .card-3 li { padding: 0.5rem 0; border-bottom: 1px dashed var(--color-border); font-weight: 500; }
         .card-3 li::before { content: "•"; color: var(--color-accent); font-weight: bold; display: inline-block; width: 1em; margin-left: -1em; }
 
-        /* --- UPDATED: Card 4 (Case Study with Action Button) --- */
+        /* --- UPDATED: Card 4 (Case Study with New Column) --- */
         .card-4 {
             grid-column: span 2;
             grid-row: span 1;
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr; /* Splits card into two columns */
-            gap: 1rem;
+            grid-template-columns: 1.2fr 0.8fr; /* Defines two columns */
+            gap: 1.5rem;
             align-items: center;
         }
         
@@ -155,26 +155,28 @@
             align-items: center;
             border-left: 1px solid var(--color-border);
             padding-left: 1rem;
+            height: 100%;
         }
 
         .lab-timer-btn {
             background-color: var(--color-lab-timer);
             color: white;
             text-decoration: none;
-            padding: 12px 18px;
-            border-radius: 8px;
+            padding: 14px 20px;
+            border-radius: 10px;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             text-align: center;
             transition: all 0.3s ease;
             box-shadow: 0 4px 12px rgba(52, 152, 219, 0.2);
             display: inline-block;
+            line-height: 1.2;
         }
 
         .lab-timer-btn:hover {
             background-color: #2980b9;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 15px rgba(52, 152, 219, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
         }
 
         /* Card 6 (Playlist) */
@@ -185,7 +187,7 @@
         @media (max-width: 768px) {
             .bento-grid-container { grid-template-columns: 1fr; gap: 1rem; }
             .bento-card { grid-column: span 1 !important; grid-row: span 1 !important; }
-            .card-4 { grid-template-columns: 1fr; } /* Stack columns on mobile */
+            .card-4 { grid-template-columns: 1fr; } 
             .lab-app-column { border-left: none; border-top: 1px solid var(--color-border); padding-left: 0; padding-top: 1rem; }
         }
     </style>
@@ -251,8 +253,8 @@
                 </div>
             </div>
             <div class="lab-app-column">
-                <a href="[PASTE YOUR APP URL HERE]" class="lab-timer-btn">
-                    Try My Lab Timer App
+                <a href="https://s79553.github.io/-lab-timer-app/" target="_blank" class="lab-timer-btn">
+                    Try My Lab <br>Timer App
                 </a>
             </div>
         </div>
@@ -261,7 +263,7 @@
             <div class="card-header" style="margin-bottom: 0;">STUDY FLOW</div>
             <div class="placeholder-bar"></div>
             <div style="margin-left: 1rem;">
-               <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/artist/0J1gUosYaFbrSG6FkbE4c7?utm_source=generator" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+               <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DWWQRvui9Df7X" width="100%" height="80" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
             </div>
         </div>
 
